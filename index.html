@@ -40,9 +40,16 @@
         <br/><br />
         <div class="list__btn-4">
             <button onclick="agregarNumero(0)" class="btn">0</button>
-            <button onclick="calcular()" class="btn">=</button>
-            <button onclick="borrar()" class="btn">C</button>
             <button onclick="agregarOperador('/')" class="btn">/</button>
+            <button onclick="agregarOperador('^')" class="btn">^</button>
+            <button onclick="agregarDecimal()" class="btn">.</button>
+        </div>
+        <br/><br />
+        <div class="list__btn-5">
+            <button onclick="agregarNumero(Math.E)" class="btn">e</button>
+            <button onclick="agregarNumero(Math.PI)" class="btn">π</button>
+            <button onclick="borrar()" class="btn">C</button>
+            <button onclick="calcular()" class="btn">=</button>
         </div>
     </div>
     <script src="./JS/calculator.js"></script>

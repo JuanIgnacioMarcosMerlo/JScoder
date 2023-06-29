@@ -29,6 +29,9 @@ function calcular() {
         case "/":
             resultado = dividir();
             break;
+            case "^":
+            resultado = potencia();
+            break;
         default:
             alert("Operador inválido.");
             return;
@@ -75,6 +78,19 @@ function dividir() {
     }
     return total;
 }
+
+function agregarDecimal() {
+    if (!display.value.includes('.')) {
+        display.value += '.';
+    }
+}
+
+function potencia() {
+    let base = numeros[0];
+    let exponente = numeros[1];
+    return Math.pow(base, exponente);
+}
+
 
 function borrar() {
     display.value = "";
