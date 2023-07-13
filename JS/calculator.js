@@ -2,6 +2,14 @@ let display = document.getElementById("display");
 let operador = "";
 let numeros = [];
 
+window.addEventListener('load', function() {
+    let resultadoGuardado = localStorage.getItem('resultado');
+    if (resultadoGuardado) {
+        display.value = resultadoGuardado;
+    }
+});
+
+
 function agregarNumero(numero) {
     display.value += numero;
 }
@@ -35,12 +43,13 @@ function calcular() {
         default:
             alert("Operador inválido.");
             return;
-    }
-
-    display.value = resultado;
-    operador = "";
-    numeros = [];
+        }
+        display.value = resultado;
+        operador = "";
+        numeros = [];
+        localStorage.setItem('resultado', display.value);
 }
+
 
 function sumar() {
     let total = 0;
@@ -99,6 +108,7 @@ function borrar() {
 }
 
 
+
 document.addEventListener("keydown", function(event) {
     let tecla = event.key;
   
@@ -112,3 +122,5 @@ document.addEventListener("keydown", function(event) {
       borrar();
     }
   });
+
+
