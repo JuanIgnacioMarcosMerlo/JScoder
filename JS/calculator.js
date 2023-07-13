@@ -5,10 +5,10 @@ let numeros = [];
 window.addEventListener('load', function() {
     let resultadoGuardado = localStorage.getItem('resultado');
     if (resultadoGuardado) {
-        display.value = resultadoGuardado;
+        let resultadoObj = JSON.parse(resultadoGuardado);
+        display.value = resultadoObj.valor;
     }
 });
-
 
 function agregarNumero(numero) {
     display.value += numero;
@@ -47,7 +47,8 @@ function calcular() {
         display.value = resultado;
         operador = "";
         numeros = [];
-        localStorage.setItem('resultado', display.value);
+        let resultadoObj = { valor: resultado };
+        localStorage.setItem('resultado', JSON.stringify(resultadoObj));
 }
 
 
