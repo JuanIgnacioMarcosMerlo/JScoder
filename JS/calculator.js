@@ -91,74 +91,24 @@ function agregarOperador(op) {
 function calcular() {
     numeros.push(parseFloat(display.value));
 
-    let resultado;
-    switch (operador) {
-        case "+":
-            resultado = sumar();
-            break;
-        case "-":
-            resultado = restar();
-            break;
-        case "*":
-            resultado = multiplicar();
-            break;
-        case "/":
-            resultado = dividir();
-            break;
-            case "^":
-            resultado = potencia();
-            break;
-        default:
-            alert("Operador inválido.");
-            return;
-        }
+    try {
+        let resultado = math.evaluate(numeros.join(` ${operador} `));
         agregarOperacionAlHistorial(numeros.join(` ${operador} `));
         display.value = resultado;
         operador = "";
         numeros = [];
         let resultadoObj = { valor: resultado };
         localStorage.setItem('resultado', JSON.stringify(resultadoObj));
+    } catch (error) {
+        alert("Error en la operación.");
+    }
 }
+
 
 
 // mis funciones
 
-function sumar() {
-    let total = 0;
-    for (let i = 0; i < numeros.length; i++) {
-        total += numeros[i];
-    }
-    return total;
-}
 
-function restar() {
-    let total = numeros[0];
-    for (let i = 1; i < numeros.length; i++) {
-        total -= numeros[i];
-    }
-    return total;
-}
-
-function multiplicar() {
-    let total = 1;
-    for (let i = 0; i < numeros.length; i++) {
-        total *= numeros[i];
-    }
-    return total;
-}
-
-function dividir() {
-    let total = numeros[0];
-    for (let i = 1; i < numeros.length; i++) {
-        if (numeros[i] !== 0) {
-            total /= numeros[i];
-        } else {
-            alert("División entre cero no está permitida.");
-            return;
-        }
-    }
-    return total;
-}
 
 function agregarDecimal() {
     if (!display.value.includes('.')) {
@@ -229,6 +179,3 @@ document.addEventListener("keyup", function(e) {
         altGrKeyPressed = false;
     }
 });
-
-
-
