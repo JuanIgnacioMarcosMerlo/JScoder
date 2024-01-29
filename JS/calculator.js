@@ -26,6 +26,8 @@ function closeModal() {
 
 const historyBtn = document.createElement("button");
 historyBtn.id = "historyBtn";
+historyBtn.style.backgroundColor = "#D1E500";
+historyBtn.style.color = "#000";
 historyBtn.textContent = "Ver Historial";
 historyBtn.onclick = openModal;
 document.body.appendChild(historyBtn);
